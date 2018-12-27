@@ -1,9 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-"Enable man pages in vim with :Man
-runtime! ftplugin/man.vim
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -22,7 +19,6 @@ Plugin 'universal-ctags/ctags'
 Plugin 'https://github.com/ervandew/supertab.git'
 Plugin 'https://github.com/scrooloose/nerdtree.git'
 Plugin 'https://github.com/vim-scripts/taglist.vim.git'
-Plugin 'https://github.com/tpope/vim-dadbod'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
