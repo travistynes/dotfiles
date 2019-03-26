@@ -1,0 +1,2 @@
+#JAVA_HOME=/home/travis/java/jdk-11.0.1
+JAVA_HOME=/home/travis/java/jdk1.8.0_202
