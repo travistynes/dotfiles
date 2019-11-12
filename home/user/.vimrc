@@ -40,6 +40,7 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 syntax on
+set t_Co=256
 set hidden
 set number
 set ignorecase
@@ -91,3 +92,7 @@ let Tlist_Show_One_File = 1
 " ALE linter settings
 "let g:ale_lint_on_enter = 0 " Getting errors when opening vim session.
 "let g:airline#extensions#ale#enabled = 1 " Show lint errors / warnings in statusline.
+
+" Add command to pretty format JSON (user defined commands must start with a
+" capital letter, and underscores are not allowed.
+:command FormatJson %!python -m json.tool
