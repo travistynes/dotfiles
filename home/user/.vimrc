@@ -56,6 +56,9 @@ let mapleader = " "
 " Open nerd tree
 :nnoremap <leader>t :NERDTreeToggle<CR>
 
+" Open nerd tree and reveal the current file in the tree
+:nnoremap ,t :NERDTreeFind<CR>
+
 " Toggle tag list
 :nnoremap <leader>m :TlistToggle<CR>
 
@@ -88,10 +91,6 @@ let g:airline#extensions#whitespace#enabled = 0
 
 " Only show tags in taglist for the current buffer
 let Tlist_Show_One_File = 1
-
-" ALE linter settings
-"let g:ale_lint_on_enter = 0 " Getting errors when opening vim session.
-"let g:airline#extensions#ale#enabled = 1 " Show lint errors / warnings in statusline.
 
 " Add command to pretty format JSON (user defined commands must start with a
 " capital letter, and underscores are not allowed.
