@@ -74,7 +74,7 @@ let mapleader = " "
 
 " Grep for word under cursor, don't go to first match (grep!) and open the
 " quickfix list at the bottom.
-:nnoremap <leader>f :grep! -rnwI --exclude=tags --exclude-dir={target,build,output,node_modules,logs} -e "<C-R><C-W>" . <CR> :bo cw<CR>
+:nnoremap <leader>f :grep! -rnwI --exclude={tags,*.vim} --exclude-dir={target,build,output,node_modules,logs} -e "<C-R><C-W>" . <CR> :bo cw<CR>
 
 " Go to definition of word under cursor.
 :nnoremap <leader>] <C-]>
