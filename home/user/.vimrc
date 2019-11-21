@@ -1,9 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-"Enable man pages in vim with :Man
-runtime! ftplugin/man.vim
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -22,7 +19,7 @@ Plugin 'universal-ctags/ctags'
 Plugin 'https://github.com/ervandew/supertab.git'
 Plugin 'https://github.com/scrooloose/nerdtree.git'
 Plugin 'https://github.com/vim-scripts/taglist.vim.git'
-Plugin 'https://github.com/tpope/vim-dadbod'
+Plugin 'https://github.com/vim-scripts/groovyindent-unix'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -40,7 +37,6 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 syntax on
-set t_Co=256
 set hidden
 set number
 set ignorecase
@@ -55,9 +51,6 @@ let mapleader = " "
 
 " Open nerd tree
 :nnoremap <leader>t :NERDTreeToggle<CR>
-
-" Open nerd tree and reveal the current file in the tree
-:nnoremap ,t :NERDTreeFind<CR>
 
 " Toggle tag list
 :nnoremap <leader>m :TlistToggle<CR>
@@ -74,7 +67,7 @@ let mapleader = " "
 
 " Grep for word under cursor, don't go to first match (grep!) and open the
 " quickfix list at the bottom.
-:nnoremap <leader>f :grep! -rnwI --exclude={tags,*.vim} --exclude-dir={target,build,output,node_modules,logs} -e "<C-R><C-W>" . <CR> :bo cw<CR>
+:nnoremap <leader>f :grep! -rnwI --exclude=tags --exclude-dir={target,logs} -e "<C-R><C-W>" . <CR> :bo cw<CR>
 
 " Go to definition of word under cursor.
 :nnoremap <leader>] <C-]>
@@ -92,6 +85,6 @@ let g:airline#extensions#whitespace#enabled = 0
 " Only show tags in taglist for the current buffer
 let Tlist_Show_One_File = 1
 
-" Add command to pretty format JSON (user defined commands must start with a
-" capital letter, and underscores are not allowed.
-:command FormatJson %!python -m json.tool
+" ALE linter settings
+"let g:ale_lint_on_enter = 0 " Getting errors when opening vim session.
+"let g:airline#extensions#ale#enabled = 1 " Show lint errors / warnings in statusline.
