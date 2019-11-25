@@ -69,6 +69,9 @@ let mapleader = " "
 " quickfix list at the bottom.
 :nnoremap <leader>f :grep! -rnwI --exclude=tags --exclude-dir={target,logs} -e "<C-R><C-W>" . <CR> :bo cw<CR>
 
+" Save and run gradle project
+:nnoremap <leader>g :w<CR>:!gradle run<CR>
+
 " Go to definition of word under cursor.
 :nnoremap <leader>] <C-]>
 
