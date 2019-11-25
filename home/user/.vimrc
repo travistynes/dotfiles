@@ -37,6 +37,7 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 syntax on
+set t_Co=256
 set hidden
 set number
 set ignorecase
@@ -51,6 +52,9 @@ let mapleader = " "
 
 " Open nerd tree
 :nnoremap <leader>t :NERDTreeToggle<CR>
+
+" Open nerd tree and reveal the current file in the tree
+:nnoremap ,t :NERDTreeFind<CR>
 
 " Toggle tag list
 :nnoremap <leader>m :TlistToggle<CR>
@@ -67,9 +71,8 @@ let mapleader = " "
 
 " Grep for word under cursor, don't go to first match (grep!) and open the
 " quickfix list at the bottom.
-:nnoremap <leader>f :grep! -rnwI --exclude=tags --exclude-dir={target,logs} -e "<C-R><C-W>" . <CR> :bo cw<CR>
+:nnoremap <leader>f :grep! -rnwI --exclude={tags,*.vim} --exclude-dir={target,build,output,node_modules,logs} -e "<C-R><C-W>" . <CR> :bo cw<CR>
 
-" Save and run gradle project
 :nnoremap <leader>g :w<CR>:!gradle run<CR>
 
 " Go to definition of word under cursor.
