@@ -19,7 +19,7 @@ Plugin 'universal-ctags/ctags'
 Plugin 'https://github.com/ervandew/supertab.git'
 Plugin 'https://github.com/scrooloose/nerdtree.git'
 Plugin 'https://github.com/vim-scripts/taglist.vim.git'
-Plugin 'https://github.com/vim-scripts/groovyindent-unix'
+Plugin 'https://github.com/travistynes/groovyindent-unix'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -83,7 +83,7 @@ let mapleader = " "
 
 " Auto format current file using Eclipse
 " See https://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2Ftasks%2Ftasks-231.htm
-:nnoremap <leader>ff :!eclipse -application org.eclipse.jdt.core.JavaCodeFormatter -config ~/Documents/projects/mes-formatter.prefs %:p<CR>
+:nnoremap <leader>ff :!eclipse -application org.eclipse.jdt.core.JavaCodeFormatter -config ~/Documents/projects/.java-format.xml %:p<CR>
 
 " Disable whitespace extension in airline statusline
 let g:airline#extensions#whitespace#enabled = 0
