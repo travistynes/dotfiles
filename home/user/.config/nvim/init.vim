@@ -67,7 +67,7 @@ let mapleader = " "
 
 " Grep for word under cursor, don't go to first match (grep!) and open the
 " quickfix list at the bottom.
-:nnoremap <leader>f :grep! -rnwI --exclude={tags,*.vim} --exclude-dir={target,build,output,node_modules,logs} -e "<C-R><C-W>" . <CR> :bo cw<CR>
+":nnoremap <leader>f :grep! -rnwI --exclude={tags,*.vim} --exclude-dir={target,build,output,node_modules,logs} -e "<C-R><C-W>" . <CR> :bo cw<CR>
 
 :nnoremap <leader>g :w<CR>:!gradle run<CR>
 
@@ -90,6 +90,14 @@ let Tlist_Show_One_File = 1
 " Add command to pretty format JSON (user defined commands must start with a
 " capital letter, and underscores are not allowed.
 :command! FormatJson %!python -m json.tool
+
+" Goto keys
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gt <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <leader>f <Plug>(coc-format)
+vmap <leader>f <Plug>(coc-format-selected)
 
 " Set color theme
 let g:PaperColor_Theme_options = {
