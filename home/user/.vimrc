@@ -1,6 +1,9 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" Add fuzzy finder (fzf) to vim's runtimepath
+set rtp+=~/.fzf
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -11,8 +14,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
-"Plugin 'scrooloose/syntastic' " Syntastic linting causes slow saves (:w)
-"Plugin 'https://github.com/w0rp/ale' " Trying ALE for linting.
 Plugin 'bling/vim-airline'
 Plugin 'https://github.com/tommcdo/vim-fubitive.git'
 Plugin 'universal-ctags/ctags'
@@ -20,6 +21,7 @@ Plugin 'https://github.com/ervandew/supertab.git'
 Plugin 'https://github.com/scrooloose/nerdtree.git'
 Plugin 'https://github.com/vim-scripts/taglist.vim.git'
 Plugin 'https://github.com/travistynes/groovyindent-unix'
+Plugin 'https://github.com/junegunn/fzf.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -35,6 +37,13 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+" vim-plug section - use :PlugInstall to install these plugins
+call plug#begin()
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+call plug#end()
 
 syntax on
 set t_Co=256
