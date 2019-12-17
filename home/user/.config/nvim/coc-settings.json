@@ -1,4 +1,5 @@
 {
+	"java.home": "/home/travis/java/jdk-11.0.1",
 	"languageserver": {
 		"groovy": {
 			"command": "java",
