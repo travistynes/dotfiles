@@ -38,6 +38,7 @@ set tw=0 " Disable inserting a newline on word wrap.
 set hlsearch
 set wildmenu
 set wildmode=list
+set updatetime=500 " Used by CursorHold to highlight word under cursor after time value
 
 " Set leader
 :nnoremap <SPACE> <Nop>
@@ -96,8 +97,25 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> ga <Plug>(coc-codeaction)
+
 nmap <leader>f <Plug>(coc-format)
 vmap <leader>f <Plug>(coc-format-selected)
+nmap <silent> rn <Plug>(coc-rename)
+
+" Highlight word under cursor after updatetime
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Show documentation for word under cursor
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+	if (index(['vim','help'], &filetype) >= 0)
+		execute 'h '.expand('<cword>')
+	else
+		call CocAction('doHover')
+	endif
+endfunction
 
 " Set color theme
 let g:PaperColor_Theme_options = {
