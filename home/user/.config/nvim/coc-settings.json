@@ -4,7 +4,7 @@
 		"groovy": {
 			"command": "java",
 			"args": ["-jar", "$HOME/Documents/projects/groovy-language-server/build/libs/groovy-language-server-all.jar"],
-			"filetypes": ["groovy", "java"]
+			"filetypes": ["groovy"]
 		}
 	}
 }
