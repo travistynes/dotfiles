@@ -1,8 +1,3 @@
-set termguicolors
-
-" Add fuzzy finder (fzf) to vim's runtimepath
-set rtp+=~/.fzf
-
 " Install vim-plug if needed
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
@@ -39,6 +34,12 @@ set hlsearch
 set wildmenu
 set wildmode=list
 set updatetime=500 " Used by CursorHold to highlight word under cursor after time value
+set termguicolors
+set rtp+=~/.fzf " Add fuzzy finder (fzf) to vim's runtimepath
+
+" Set node path so that n node manager changing node versions doesn't break coc.nvim
+let node_path = $HOME . '/n/n/versions/node/13.3.0/bin/node'
+let g:coc_node_path = node_path
 
 " Set leader
 :nnoremap <SPACE> <Nop>
