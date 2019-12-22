@@ -1,7 +1,10 @@
 {
+	/*
+	If coc-java stops working or java fails to start correctly, it has been helpful
+	to delete the directory ~/.config/coc/extensions/coc-java-data and restart vim.
+	*/
 	"java.home": "/home/travis/java/jdk-11.0.1",
 	"java.format.settings.url": "$HOME/Documents/projects/.java-format.xml",
-	"java.import.gradle.enabled": false,
 	"java.referencesCodeLens.enabled": true,
 	"java.trace.server": "verbose",
 	"codeLens.enable": false,
