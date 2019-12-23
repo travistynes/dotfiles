@@ -21,6 +21,7 @@ Plug 'https://github.com/travistynes/groovyindent-unix'
 Plug 'https://github.com/junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'https://github.com/vim-scripts/gtags.vim'
 
 call plug#end()
 
@@ -94,15 +95,21 @@ let Tlist_Show_One_File = 1
 :command! FormatJson %!python -m json.tool
 
 " Goto keys
-nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gd :Gtags <C-R><C-W><CR> :bo cw<CR> :cc1<CR>
+nmap <silent> gr :Gtags -r <C-R><C-W><CR> :bo cw<CR> :cc1<CR>
+"nmap <silent> gd <Plug>(coc-definition)
+"nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
 nmap <silent> ga <Plug>(coc-codeaction)
 
 nmap <leader>f <Plug>(coc-format)
 vmap <leader>f <Plug>(coc-format-selected)
 nmap <silent> rn <Plug>(coc-rename)
+
+" Navigate quickfix with ctrl-j and ctrl-k
+nmap <C-j> :cn<CR> " goto next
+nmap <C-k> :cp<CR> " goto previous
 
 " Highlight word under cursor after updatetime
 autocmd CursorHold * silent call CocActionAsync('highlight')
