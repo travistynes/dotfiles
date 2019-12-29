@@ -22,6 +22,8 @@ Plug 'https://github.com/junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'https://github.com/vim-scripts/gtags.vim'
+Plug 'https://github.com/jremmen/vim-ripgrep'
+Plug 'https://github.com/jesseleite/vim-agriculture'
 
 call plug#end()
 
@@ -49,14 +51,14 @@ let mapleader = " "
 " Open nerd tree
 :nnoremap <leader>t :NERDTreeToggle<CR>
 
+" Toggle tag list
+:nnoremap <leader>m :TlistToggle<CR>
+
 " Open nerd tree and reveal the current file in the tree
 :nnoremap ,t :NERDTreeFind<CR>
 
 " Start fuzzy finder
 :nnoremap ,f :Files<CR>
-
-" Toggle tag list
-:nnoremap <leader>m :TlistToggle<CR>
 
 " Switch buffers with buf# <leader>n
 :nnoremap <leader>n <C-^> 
@@ -80,9 +82,9 @@ let mapleader = " "
 " Pop tag stack
 :nnoremap <leader>[ <C-t>
 
-" Auto format current file using Eclipse
-" See https://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2Ftasks%2Ftasks-231.htm
-:nnoremap <leader>ff :!eclipse -application org.eclipse.jdt.core.JavaCodeFormatter -config ~/Documents/projects/.java-format.xml %:p<CR>
+" Use ripgrep to grep for word under cursor recursively from current directory
+let g:agriculture#rg_options='-w' " Match whole word
+:nnoremap <leader>f :RgRaw <C-R><C-W><CR>
 
 " Disable whitespace extension in airline statusline
 let g:airline#extensions#whitespace#enabled = 0
@@ -95,16 +97,16 @@ let Tlist_Show_One_File = 1
 :command! FormatJson %!python -m json.tool
 
 " Goto keys
-nmap <silent> gd :Gtags <C-R><C-W><CR> :bo cw<CR> :cc1<CR>
-nmap <silent> gr :Gtags -r <C-R><C-W><CR> :bo cw<CR> :cc1<CR>
-"nmap <silent> gd <Plug>(coc-definition)
-"nmap <silent> gr <Plug>(coc-references)
+"nmap <silent> gd :Gtags <C-R><C-W><CR> :bo cw<CR> :cc1<CR>
+"nmap <silent> gr :Gtags -r <C-R><C-W><CR> :bo cw<CR> :cc1<CR>
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> ga <Plug>(coc-codeaction)
 
-nmap <leader>f <Plug>(coc-format)
-vmap <leader>f <Plug>(coc-format-selected)
+nmap <leader>ff <Plug>(coc-format)
+vmap <leader>ff <Plug>(coc-format-selected)
 nmap <silent> rn <Plug>(coc-rename)
 
 " Navigate quickfix with ctrl-j and ctrl-k

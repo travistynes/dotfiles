@@ -5,9 +5,7 @@
 	*/
 	"java.home": "/home/travis/java/jdk-11.0.1",
 	"java.format.settings.url": "$HOME/Documents/projects/.java-format.xml",
-	"java.referencesCodeLens.enabled": true,
 	"java.trace.server": "verbose",
-	"codeLens.enable": false,
 	"languageserver": {
 		"groovy": {
 			"command": "java",
