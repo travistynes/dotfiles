@@ -55,10 +55,10 @@ let mapleader = " "
 :nnoremap <leader>m :TlistToggle<CR>
 
 " Open nerd tree and reveal the current file in the tree
-:nnoremap ,t :NERDTreeFind<CR>
+:nnoremap T :NERDTreeFind<CR>
 
 " Start fuzzy finder
-:nnoremap ,f :Files<CR>
+:nnoremap F :Files<CR>
 
 " Switch buffers with buf# <leader>n
 :nnoremap <leader>n <C-^> 
