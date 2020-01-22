@@ -18,6 +18,7 @@ Plug 'https://github.com/ervandew/supertab.git'
 Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'https://github.com/vim-scripts/taglist.vim.git'
 Plug 'https://github.com/travistynes/groovyindent-unix'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'https://github.com/junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'NLKNguyen/papercolor-theme'
