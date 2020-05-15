@@ -40,6 +40,10 @@ set wildmode=list
 set updatetime=500 " Used by CursorHold to highlight word under cursor after time value
 set termguicolors
 set rtp+=~/.fzf " Add fuzzy finder (fzf) to vim's runtimepath
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab " Convert tabs to spaces
 
 " Set node path so that n node manager changing node versions doesn't break coc.nvim
 let node_path = $HOME . '/n/n/versions/node/13.3.0/bin/node'
