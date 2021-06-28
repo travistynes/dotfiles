@@ -21,6 +21,7 @@ Plug 'https://github.com/travistynes/groovyindent-unix'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'https://github.com/junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'natebosch/vim-lsc'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'https://github.com/vim-scripts/gtags.vim'
 Plug 'https://github.com/jremmen/vim-ripgrep'
@@ -48,6 +49,18 @@ set expandtab " Convert tabs to spaces
 " Set node path so that n node manager changing node versions doesn't break coc.nvim
 let node_path = $HOME . '/n/n/versions/node/13.3.0/bin/node'
 let g:coc_node_path = node_path
+
+" Configuration for vim-lsc (language server)
+"set shortmess-=F
+"let g:lsc_server_commands = {'java': '/home/travis/Documents/projects/java-language-server/dist/lang_server_linux.sh'}
+
+" vim-lsc command mapping
+"let g:lsc_auto_map = {'defaults': v:true,
+"            \ 'GoToDefinition': 'gd',
+"            \ 'FindReferences': 'gr',
+"            \ 'FindImplementations': 'gi',
+"            \ 'FindCodeActions': 'ga',
+"            \}
 
 " Set leader
 :nnoremap <SPACE> <Nop>
@@ -79,8 +92,6 @@ let mapleader = " "
 " quickfix list at the bottom.
 ":nnoremap <leader>f :grep! -rnwI --exclude={tags,*.vim} --exclude-dir={target,build,output,node_modules,logs} -e "<C-R><C-W>" . <CR> :bo cw<CR>
 
-:nnoremap <leader>g :w<CR>:!gradle run<CR>
-
 " Go to definition of word under cursor.
 :nnoremap <leader>] <C-]>
 
@@ -90,6 +101,15 @@ let mapleader = " "
 " Use ripgrep to grep for word under cursor recursively from current directory
 let g:agriculture#rg_options='-w' " Match whole word
 :nnoremap <leader>f :RgRaw <C-R><C-W><CR>
+
+" Tabs
+:nnoremap tt :tabnew<CR>
+:nnoremap tc :tabclose<CR>
+:nnoremap tn :tabnext<CR>
+:nnoremap tp :tabprev<CR>
+
+" Git blame
+:nnoremap gb :Gblame<CR>
 
 " Disable whitespace extension in airline statusline
 let g:airline#extensions#whitespace#enabled = 0
@@ -104,33 +124,27 @@ let Tlist_Show_One_File = 1
 " Goto keys
 "nmap <silent> gd :Gtags <C-R><C-W><CR> :bo cw<CR> :cc1<CR>
 "nmap <silent> gr :Gtags -r <C-R><C-W><CR> :bo cw<CR> :cc1<CR>
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> gt <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> ga <Plug>(coc-codeaction)
 
-nmap <leader>ff <Plug>(coc-format)
-vmap <leader>ff <Plug>(coc-format-selected)
-nmap <silent> rn <Plug>(coc-rename)
+" coc-nvim (language server) commands
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> ga <Plug>(coc-codeaction)
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
 
 " Navigate quickfix with ctrl-j and ctrl-k
 nmap <C-j> :cn<CR> " goto next
 nmap <C-k> :cp<CR> " goto previous
-
-" Highlight word under cursor after updatetime
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Show documentation for word under cursor
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-	if (index(['vim','help'], &filetype) >= 0)
-		execute 'h '.expand('<cword>')
-	else
-		call CocAction('doHover')
-	endif
-endfunction
 
 " Set color theme
 let g:PaperColor_Theme_options = {
